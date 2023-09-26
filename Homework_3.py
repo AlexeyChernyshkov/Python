@@ -75,7 +75,6 @@ if (employee1 == 'да' or employee1 == 'нет') and (employee2 == 'да' or em
 else:
     print('да или нет')
 
-
 #----------------------------Дополнительная задача 2-----------------------------#
 #Робот может перемещаться в четырех направлениях («11» — север, «12» — запад, «13» — юг, «14» — восток)
 # и принимать три цифровые команды: 0 — продолжать движение, 1 — поворот налево, –1 — поворот направо.
@@ -87,7 +86,8 @@ else:
 # Использовал словарь ключ:значение
 
 
-choice, side, trig, counter = int(input("11 - север, 12 - запад, 13 - юг, 14 - восток ")), {'11':'север', '12':'запад', '13':'юг', '14':'восток'}, "да", 0
+choice, trig, counter = int(input("11 - север, 12 - запад, 13 - юг, 14 - восток ")), "да", 0
+side = {'11':'север', '12':'запад', '13':'юг', '14':'восток'}
 if side.get(str(choice)) != None:
     print(f"Начальное значение: {side.get(str(choice))}")
 else:
@@ -107,10 +107,10 @@ while trig != 'нет':  # пока не будет введено "нет" на
         print("Можно вводить только -1, 0, 1")
     if counter > 0:
         while counter > 4:
-            counter -= 4   # уменьшаем значение счетчика до границ 0 - 4, если надо
+            counter -= 4   # уменьшаем значение счетчика до границ 1 - 4, если надо
     else:
         while counter < -4:
-            counter += 4  # увеличиваем значение счетчика до границ 0 - 4, если надо
+            counter += 4  # увеличиваем значение счетчика до границ 1 - 4, если надо
     trig = input("Продолжаем? да/нет ")  # Ответ пользователя
 choice += counter
 if choice > 14:
@@ -119,3 +119,54 @@ elif choice < 11:
     choice += 4 #увеличиваем значение выбора (оно же значение нынешнего положения) до границ 11 - 14, если надо
 print(f"Конечная точка: {side.get(str(choice))}")
 '''
+
+# ----------------------------Дополнительная задача 2-----------------------------#
+# Даны два прямоугольника, стороны которых параллельны или перпендикулярны осям координат.
+# Известны координаты левого нижнего угла каждого из них и длины их сторон.
+# Один из прямоугольников назовем первым, другой — вторым.
+# а) Определить, принадлежат ли все точки первого прямоугольника второму.
+# б) Определить, принадлежат ли все точки одного из прямоугольников другому.
+# в) Определить, пересекаются ли эти прямоугольники.
+
+
+left_bot_angle_1 = [int(input("x кордината первого прямоугольника ")), int(input("y кордината первого прямоугольника "))]
+width_height_1 = [int(input("ширина_1 ")), int(input("высота_1 "))]
+left_bot_angle_2 = [int(input("x кордината второго прямоугольника ")), int(input("y кордината второго прямоугольника "))]
+width_height_2 = [int(input("ширина_2 ")), int(input("высота_2 "))]
+
+right_top_angle_1 = [left_bot_angle_1[0] + width_height_1[0], left_bot_angle_1[1] + width_height_1[1]]
+right_top_angle_2 = [left_bot_angle_2[0] + width_height_2[0], left_bot_angle_2[1] + width_height_2[1]]
+
+print(left_bot_angle_1, width_height_1)
+print(left_bot_angle_2, width_height_2)
+print(right_top_angle_1, right_top_angle_2)
+
+print("-------------------------а-------------------------")
+if left_bot_angle_2[0] <= left_bot_angle_1[0] and left_bot_angle_2[1] <= left_bot_angle_1[1]:
+    if right_top_angle_2[0] >= right_top_angle_1[0] and right_top_angle_2[1] >= right_top_angle_1[1]:
+        print("Да, первый принадлежит второму")
+    else:
+        print("Нет, первый не принадлежит второму")
+else:
+    print("Нет, первый не принадлежит второму")
+print("-------------------------б-------------------------")
+# if left_bot_angle_2[0] - left_bot_angle_1[0] == 0 and left_bot_angle_2[1] - left_bot_angle_1[1] == 0:
+#     if right_top_angle_2[0] - right_top_angle_1[0] >= 0 and right_top_angle_2[1] - right_top_angle_1[1] >= 0:
+#         print("Первый принадлежит второму")
+#     elif right_top_angle_2[0] - right_top_angle_1[0] <= 0 and right_top_angle_2[1] - right_top_angle_1[1] <= 0:
+#         print("Второй принадлежит первому")
+# elif left_bot_angle_2[0] - left_bot_angle_1[0] < 0 and left_bot_angle_2[1] - left_bot_angle_1[1] < 0:
+#     print('1.1 OK')
+#     if right_top_angle_2[0] - right_top_angle_1[0] >= 0 and right_top_angle_2[1] - right_top_angle_1[1] >= 0:
+#         print("Первый принадлежит второму")
+# elif left_bot_angle_2[0] - left_bot_angle_1[0] > 0 and left_bot_angle_2[1] - left_bot_angle_1[1] > 0:
+#     print('2.1 OK')
+#     if right_top_angle_2[0] - right_top_angle_1[0] >= 0 and right_top_angle_2[1] - right_top_angle_1[1] >= 0:
+#         print("Второй принадлежит первому")
+#     else:
+#         print("Все точки ни одного прямоугольника другому не принадлежат")
+
+print("-------------------------в-------------------------")
+
+
+
