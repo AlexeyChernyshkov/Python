@@ -7,7 +7,7 @@
 # 	2. температура меньше либо равно 0 градусов по цельсию
 
 temp_C, press_Pa = int(input("Температура, цельсий: ")), int(input("Давление, паскаль: "))
-if temp_C <= 0 and press_Pa % 9999 > 0:
+if temp_C <= 0 and press_Pa == 10 ** 5:
     print("YES")
 else:
     print("NO")
@@ -82,7 +82,7 @@ else:
 # Вывести направление робота после выполнения полученной команды (то есть север, запад, юг или восток).
 
 
-#Сделал задачу таким образом, чтобы можно было продолжать вводить вводить направления движения, пока на вопрос "Продолжить?" не будет введено "нет".
+#Сделал задачу таким образом, чтобы можно было продолжать вводить направления движения, пока на вопрос "Продолжить?" не будет введено "нет".
 # Использовал словарь ключ:значение
 
 
@@ -129,44 +129,53 @@ print(f"Конечная точка: {side.get(str(choice))}")
 # в) Определить, пересекаются ли эти прямоугольники.
 
 
-left_bot_angle_1 = [int(input("x кордината первого прямоугольника ")), int(input("y кордината первого прямоугольника "))]
-width_height_1 = [int(input("ширина_1 ")), int(input("высота_1 "))]
-left_bot_angle_2 = [int(input("x кордината второго прямоугольника ")), int(input("y кордината второго прямоугольника "))]
-width_height_2 = [int(input("ширина_2 ")), int(input("высота_2 "))]
+left_1 = [int(input("x кордината первого прямоугольника ")), int(input("y кордината первого прямоугольника "))]
+w_h_1 = [int(input("ширина_1 ")), int(input("высота_1 "))]
+left_2 = [int(input("x кордината второго прямоугольника ")), int(input("y кордината второго прямоугольника "))]
+w_h_2 = [int(input("ширина_2 ")), int(input("высота_2 "))]
 
-right_top_angle_1 = [left_bot_angle_1[0] + width_height_1[0], left_bot_angle_1[1] + width_height_1[1]]
-right_top_angle_2 = [left_bot_angle_2[0] + width_height_2[0], left_bot_angle_2[1] + width_height_2[1]]
+right_1 = [left_1[0] + w_h_1[0], left_1[1] + w_h_1[1]]  # Правый верхний угол перовго прямоугольника
+right_2 = [left_2[0] + w_h_2[0], left_2[1] + w_h_2[1]]  # Правый верхний угол второго прямоугольника
 
-print(left_bot_angle_1, width_height_1)
-print(left_bot_angle_2, width_height_2)
-print(right_top_angle_1, right_top_angle_2)
+# Просто вывод для проверки
+# print(left_1, w_h_1)
+# print(left_2, w_h_2)
+# print(right_1, right_2)
 
 print("-------------------------а-------------------------")
-if left_bot_angle_2[0] <= left_bot_angle_1[0] and left_bot_angle_2[1] <= left_bot_angle_1[1]:
-    if right_top_angle_2[0] >= right_top_angle_1[0] and right_top_angle_2[1] >= right_top_angle_1[1]:
+
+if left_2[0] <= left_1[0] and left_2[1] <= left_1[1]:
+    if right_2[0] >= right_1[0] and right_2[1] >= right_1[1]:
         print("Да, первый принадлежит второму")
     else:
         print("Нет, первый не принадлежит второму")
 else:
     print("Нет, первый не принадлежит второму")
+
 print("-------------------------б-------------------------")
-# if left_bot_angle_2[0] - left_bot_angle_1[0] == 0 and left_bot_angle_2[1] - left_bot_angle_1[1] == 0:
-#     if right_top_angle_2[0] - right_top_angle_1[0] >= 0 and right_top_angle_2[1] - right_top_angle_1[1] >= 0:
-#         print("Первый принадлежит второму")
-#     elif right_top_angle_2[0] - right_top_angle_1[0] <= 0 and right_top_angle_2[1] - right_top_angle_1[1] <= 0:
-#         print("Второй принадлежит первому")
-# elif left_bot_angle_2[0] - left_bot_angle_1[0] < 0 and left_bot_angle_2[1] - left_bot_angle_1[1] < 0:
-#     print('1.1 OK')
-#     if right_top_angle_2[0] - right_top_angle_1[0] >= 0 and right_top_angle_2[1] - right_top_angle_1[1] >= 0:
-#         print("Первый принадлежит второму")
-# elif left_bot_angle_2[0] - left_bot_angle_1[0] > 0 and left_bot_angle_2[1] - left_bot_angle_1[1] > 0:
-#     print('2.1 OK')
-#     if right_top_angle_2[0] - right_top_angle_1[0] >= 0 and right_top_angle_2[1] - right_top_angle_1[1] >= 0:
-#         print("Второй принадлежит первому")
-#     else:
-#         print("Все точки ни одного прямоугольника другому не принадлежат")
+
+if left_2[0] == left_1[0] and left_2[1] == left_1[1] and right_2[0] == right_1[0] and right_2[1] == right_1[1]:
+    print("Прямоугольники совпадают")
+elif left_2[0] <= left_1[0] and left_2[1] <= left_1[1] and right_2[0] >= right_1[0] and right_2[1] >= right_1[1]:
+    print("Да, первый принадлежит второму")
+elif left_1[0] <= left_2[0] and left_1[1] <= left_2[1] and right_1[0] >= right_2[0] and right_1[1] >= right_2[1]:
+    print("Да, второй принадлежит первому")
+else:
+    print("Не принадлежат")
 
 print("-------------------------в-------------------------")
 
+if (right_1[0] < left_2[0] and right_1[1] < left_2[1]) or (right_1[0] < left_2[0] and right_1[1] <= left_2[1]) or (right_1[0] <= left_2[0] and right_1[1] < left_2[1]):
+    print("Не пересекаются")
+elif (right_2[0] < left_1[0] and right_2[1] < left_1[1]) or (right_2[0] < left_1[0] and right_2[1] <= left_1[1]) or (right_2[0] <= left_1[0] and right_2[1] < left_1[1]):
+    print("Не пересекаются")
+else:
+    print("Пересекаются")
 
+
+
+# if (right_1[0] >= left_2[0] or right_1[1] >= left_2[1]) and (right_2[0] >= left_1[0] or right_2[1] >= left_1[1]):
+#     print("Не пересекаются")
+# else:
+#     print("Пересекаются")
 
