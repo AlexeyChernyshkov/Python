@@ -22,17 +22,19 @@ workers, summ = [int(input("1st: ")), int(input("2nd: ")), int(input("3rd: "))],
 salary = 300
 
 for i in range(len(workers)):
-    if workers[i] > 50:
-        if workers[i] > 75:
-            if workers[i] >= 100:
-                summ.append(salary + salary)
+    if workers[i] >= 0:
+        if workers[i] > 50:
+            if workers[i] > 75:
+                if workers[i] >= 100:
+                    summ.append(salary + salary)
+                else:
+                    summ.append(salary + salary * 0.65)
             else:
-                summ.append(salary + salary * 0.65)
+                summ.append(salary + salary * 0.3)
         else:
-            summ.append(salary + salary * 0.3)
+            summ.append(salary)
     else:
-        summ.append(salary)
-
+        summ.append("Выработка не может быть отрицательной")
 for i in range(len(summ)):
     print(f"{i+1}-й работник:", summ[i])
 
