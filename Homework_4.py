@@ -7,7 +7,7 @@ digits = [int(input("1st: ")), int(input("2nd: ")), int(input("3rd: "))]
 
 digits.sort()
 print(digits)
-'''
+
 
 
 #---------------------------------Задача 2------------------------------------------
@@ -37,5 +37,50 @@ for i in range(len(workers)):
         summ.append("Выработка не может быть отрицательной")
 for i in range(len(summ)):
     print(f"{i+1}-й работник:", summ[i])
+'''
+
+
+#---------------------------------Задача 3------------------------------------------
+# Игра камень ножницы бумага с компьютером
+# (камень побеждает ножницы / ножницы побеждает бумагу / бумага побеждает камень)
+# Игрок делает ход и затем компьютер делает ход
+# Вывести кто победил.
+
+from random import *
+
+count, trig = int(input("Введите кол-во игр: ")), 0
+
+if count <= 0:
+    print("Кол-во раундов должно быть > 0")
+    exit()
+
+while trig != count:
+    user_choice = input("камень, ножницы или бумага? ")
+    comp_choice = ['камень', 'ножницы', 'бумага']
+
+    ai = choice(comp_choice)
+
+    print("Ваш выбор: ", user_choice)
+    print("Выбор ai: ", ai)
+
+    if user_choice != 'камень' and user_choice != 'ножницы' and user_choice != 'бумага':
+        print('Выбор только между камнем, ножницами и бумагой')
+    elif user_choice == ai:
+        print("Ничья")
+    else:
+        if user_choice == 'камень' and ai == 'ножницы':
+            print("Ты выиграл")
+        elif user_choice == 'ножницы' and ai == 'бумага':
+            print("Ты выиграл")
+        elif user_choice == 'бумага' and ai == 'камень':
+            print("Ты выиграл")
+        else:
+            print("Ты проиграл")
+    trig += 1
+
+
+
+
+
 
 
