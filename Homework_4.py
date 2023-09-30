@@ -102,7 +102,27 @@ if hours >= 0 and hours <= 24:
 else:
     print("Неверное время")
 
+
+
+#---------------------------------Дополнительная задача 1------------------------------------------
+# даны 4 числа
+# найти числа, которые не повторяются (set  использовать нельзя)
+
+
+digits, counter = [int(input("Введите число ")) for i in range(4)], False
+
+for i in range(len(digits)):
+    if digits.count(digits[i]) == 1:
+        print(digits[i])
+        counter = True
+if not counter:
+    print("Уникальных чисел нет")
+
 '''
+
+
+
+
 
 
 
