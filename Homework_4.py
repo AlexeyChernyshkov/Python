@@ -127,7 +127,7 @@ year = int(input("Введите год "))
 if year < 0:
     raise ValueError("Год не может быть отрицательным!")
 
-if year % 4 == 0:
+if year % 4 == 0 and (year % 100 != 0 or year % 400 == 0):
     print("YES")
 else:
     print("NO")
