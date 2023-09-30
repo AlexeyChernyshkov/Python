@@ -37,7 +37,7 @@ for i in range(len(workers)):
         summ.append("Выработка не может быть отрицательной")
 for i in range(len(summ)):
     print(f"{i+1}-й работник:", summ[i])
-'''
+
 
 
 #---------------------------------Задача 3------------------------------------------
@@ -79,6 +79,30 @@ while trig != count:
     trig += 1
 
 
+
+#---------------------------------Задача 4------------------------------------------
+
+# Пользователь с клавиатуры вводит количество часов. ЧАСЫ МОГУТ БЫТЬ ДРОБНЫМИ
+# Если полученное значение находится в диапазоне от 0 до 5 нужно вывести надпись Good Night,
+# если в диапазоне от 6 до 13 Good Morning,
+# если в диапазоне от 14 до 17 Good Day,
+# если в диапазоне от 18 до 0 Good Evening.
+
+hours = float(input("Введите кол-во часов: "))
+
+if hours >= 0 and hours <= 24:
+    if (hours >= 0 and hours <= 5) or hours == 24:
+        print("Good Night")
+    if hours > 5 and hours <= 13:
+        print("Good Morning")
+    if hours > 13 and hours <= 17:
+        print("Good Day")
+    if hours > 17 and hours < 24:
+        print("Good Evening")
+else:
+    print("Неверное время")
+
+'''
 
 
 
