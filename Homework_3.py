@@ -163,19 +163,19 @@ elif left_1[0] <= left_2[0] and left_1[1] <= left_2[1] and right_1[0] >= right_2
 else:
     print("Не принадлежат")
 
-print("-------------------------в-------------------------")
+# print("-------------------------в-------------------------")
 
-if (right_1[0] < left_2[0] and right_1[1] < left_2[1]) or (right_1[0] < left_2[0] and right_1[1] <= left_2[1]) or (right_1[0] <= left_2[0] and right_1[1] < left_2[1]):
-    print("Не пересекаются")
-elif (right_2[0] < left_1[0] and right_2[1] < left_1[1]) or (right_2[0] < left_1[0] and right_2[1] <= left_1[1]) or (right_2[0] <= left_1[0] and right_2[1] < left_1[1]):
-    print("Не пересекаются")
-else:
-    print("Пересекаются")
+# Не доделан
 
 
-
-# if (right_1[0] >= left_2[0] or right_1[1] >= left_2[1]) and (right_2[0] >= left_1[0] or right_2[1] >= left_1[1]):
+# if (right_1[0] < left_2[0] and right_1[1] < left_2[1]) or (right_1[0] < left_2[0] and right_1[1] <= left_2[1]) or (right_1[0] <= left_2[0] and right_1[1] < left_2[1]):
+#     print("Не пересекаются")
+# elif (right_2[0] < left_1[0] and right_2[1] < left_1[1]) or (right_2[0] < left_1[0] and right_2[1] <= left_1[1]) or (right_2[0] <= left_1[0] and right_2[1] < left_1[1]):
 #     print("Не пересекаются")
 # else:
 #     print("Пересекаются")
+
+
+
+
 
