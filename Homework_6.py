@@ -24,7 +24,7 @@ def take_choose():
     return choice
 
 
-def take_pizza():
+def take_pizza(trig):
     '''Берем кусок'''
     pencolor("white")
     penup()
@@ -35,9 +35,13 @@ def take_pizza():
     circle(radius, 45)
     left(90)
     pensize(1)
+    if trig == 0:
+        penup()
     forward(radius)
     left(157.5)
     '''Берем кусочек в сторону, чтобы красиво было :)'''
+    if trig == 0:
+        pendown()
     forward(radius/2)
     right(22.5)
     pencolor("black")
@@ -96,7 +100,7 @@ trig = 0 #Триггер подсчета съеденных кусочков
 while trig < 8: # Пока съели не 8 кусочков
     choice = take_choose()
     if choice == 'да': # Если не берем кусок, тогда завершаем программу
-        take_pizza()
+        take_pizza(trig)
         while choice: # Тут просто цикл для поедания пиццы
             choice = eat_choose(choice)
             if choice == 'да': # Если едим, то едим и на исходную. Триггер +1
