@@ -3,7 +3,9 @@ from turtle import *
 import time
 
 def draw_pizza(radius):
+    '''Рисуем пиццу'''
     circle(radius)
+    #pensize(2)
     left(90)
     forward(radius)
     left(135)
@@ -13,44 +15,98 @@ def draw_pizza(radius):
         right(45)
 
 
-def eat_pizza(choice):
-    color('red')
-    begin_fill()
+def take_choose():
+    '''Взять, или не взять? Вот в чем вопрос'''
+    choice = input("Взять кусочек? да/нет")
+    if choice != 'да' and choice != 'нет':
+        raise ValueError('Ответ только да или нет!')
+    return choice
+
+
+def take_pizza():
+    '''Берем кусок'''
+    pencolor("white")
+    penup()
     forward(radius)
     left(90)
+    pendown()
+    pensize(2)
     circle(radius, 45)
     left(90)
+    pensize(1)
     forward(radius)
+    left(157.5)
+    '''Берем кусочек в сторону, чтобы красиво было :)'''
+    forward(radius/2)
+    right(22.5)
+    pencolor("black")
+    color('red')
+    begin_fill()
+    draw_part_again() # Замена строк на функцию — экономия 5-ти строк кода
     end_fill()
 
-def choice_1():
+
+def eat_choose(choice):
+    '''Есть или не есть? Тоже вопрос'''
     choice = input("Съесть кусочек? да/нет")
     if choice != 'да' and choice != 'нет':
         raise ValueError('Ответ только да или нет!')
     return choice
 
-radius = 100
-draw_pizza(radius)
-trig = 0
-while trig <= 8:
-    choice = choice_1()
-    while choice != 'нет' and trig <=8:
-        eat_pizza(choice)
-        trig += 1
-# for i in range(7):
-#     forward(radius)
-#     back(radius)
-#     right(45)
 
-# for i in range(8):
-#     color('red')
-#     begin_fill()
-#     forward(radius)
-#     left(90)
-#     time.sleep(3)
-#     circle(radius, 45)
-#     left(90)
-#     forward(radius)
-#     end_fill()
-# time.sleep(5)
+def eat_pizza():
+    '''Едим кусочек'''
+    color('white')
+    left(135)
+    begin_fill()
+    draw_part_again() # Замена строк на функцию — экономия 1-ой строки кода
+    end_fill()
+
+
+def take_back():
+    '''Если не есть, то кладем на место'''
+    eat_pizza()
+    right(22.5)
+    forward(radius / 2)
+    left(157.5)
+    color('black')
+    draw_part_again() # Замена строк на функцию — экономия 1-ой строки кода
+    left(135)
+
+def draw_part_again():
+    '''рисуем кусочек снова'''
+    forward(radius)
+    left(90)
+    circle(radius, 45)
+    left(90)
+    forward(radius)
+
+
+def go_back():
+    '''Возвращаемся на исходную (в центр)'''
+    right(22.5)
+    forward(radius/2)
+    left(112.5)
+
+
+radius = 100
+draw_pizza(radius) #вызов функции рисования
+trig = 0 #Триггер подсчета съеденных кусочков
+while trig < 8: # Пока съели не 8 кусочков
+    choice = take_choose()
+    if choice == 'да': # Если не берем кусок, тогда завершаем программу
+        take_pizza()
+        while choice: # Тут просто цикл для поедания пиццы
+            choice = eat_choose(choice)
+            if choice == 'да': # Если едим, то едим и на исходную. Триггер +1
+                eat_pizza()
+                go_back()
+                trig += 1
+                break
+            else: #Если не едим, кладем назад и на исходную
+                take_back()
+                break
+    else:
+        exit()
+
 
