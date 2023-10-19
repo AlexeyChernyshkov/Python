@@ -19,7 +19,8 @@ for i in range(len(n)):
         count = n.count(n[i])
         digits.append(n[i])
 
-print(f" {digits} : {count} раз")
+res = ', '.join(str(i) for i in digits)
+print(f"{res} : {count} раз")
 
 #------------------Задание 3--------------------------
 # В данном массиве найти два наименьших элемента.
