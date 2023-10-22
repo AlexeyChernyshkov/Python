@@ -158,7 +158,7 @@ for i in range(h):
     for j in range(h):
         if i <= int(h / 2) and (j == int(h / 2) - i or j == int(h / 2) + i):
             a[i].append(symbol)
-        elif i > int(h / 2) and a[int(h/2)-(i-int(h/2))][j] == "*": #тут проверяем такую же строку но в верхней части ромба (последнюю с первой и так далее)
+        elif i > int(h / 2) and a[int(h / 2) - (i - int(h / 2))][j] == "*": #тут проверяем такую же строку но в верхней части ромба (последнюю с первой и так далее)
             a[i].append(symbol)
         else:
             a[i].append(" ")
