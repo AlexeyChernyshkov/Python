@@ -30,24 +30,25 @@ country = {"Россия": ["Москва", "Барнаул", "Новосиби�
 
 x = "Россия"
 
-keys = list(country.keys())
+keys = list(country.keys())     #Создаем словарь с ключами
+
 for n in list(country.values()):
-    if type(n) == list and x in n:                  # Если введен город
+    if type(n) == list and x in n   # Если введен город
         index = list(country.values()).index(n)
         key = keys[index]
         print(f"{x} : {key}")
         break
-    elif x in country:                              # Если введена страна
+    elif x in country   # Если введена страна
         if type(country[x]) == list:
             print(f"{x} : ", end="")
             for sities in country[x]:
                 print(sities, end=" ")
-        else:                                       # Город государство
+        else:   # Город государство
             print(f"{x} : {country.get(x)}")
         break
-    elif type(n) == list and x not in n:            # Если введен город, и его нет в значении ключа n, идем к следующему ключу
+    elif type(n) == list and x not in n:    # Если введен город, и его нет в списке значений n, идем к следующему списку значений
         continue
-    else:                                           # Если нет в словаре
+    else:   # Если нет в словаре
         print("Не найдено")
 
 '''
