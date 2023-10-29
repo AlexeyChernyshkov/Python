@@ -25,19 +25,19 @@ else:
 # (например {Люксембург: [Люксембург]})). Для каждого города укажите, в какой стране он находится.
 # Если город и страна совпадают напечатайте “Город-государство : название_города-государства”
 
-country = {"Россия": ["Москва", "Барнаул", "Новосибирск"], "США": ["Вашингтон", "Сиэтл"], "Люксембург": "Люксембург"}
+country = {"Россия": ["Москва", "Барнаул", "Новосибирск", "Санкт-Петербург"], "США": ["Вашингтон", "Сиэтл"], "Люксембург": ["Люксембург"]}
 
 x = "Россия"
 
 keys = list(country.keys())     #Создаем словарь с ключами
 
 for n in list(country.values()):
-    if type(n) == list and x in n   # Если введен город
+    if type(n) == list and x in n:   # Если введен город
         index = list(country.values()).index(n)
         key = keys[index]
         print(f"{x} : {key}")
         break
-    elif x in country   # Если введена страна
+    elif x in country:   # Если введена страна
         if type(country[x]) == list:
             print(f"{x} : ", end="")
             for sities in country[x]:
@@ -125,18 +125,21 @@ m_colors = random.sample(range(0, 109), m)
 print(n_colors)
 print(m_colors)
 
-total = [i for i in n_colors if i in m_colors]
+total = []
+
+for i in n_colors:
+    if i in m_colors:
+        total.append(i)
+        n_colors.remove(i)
+        m_colors.remove(i)
+
+
 total.sort()
 print(f"Кол-во общих элементов: {len(total)}")
 print(f"Общие элементы: {total}")
+print(f"Цветов только у Ани: {len(n_colors)}")
+print(f"Цвета Ани: {n_colors}")
+print(f"Цветов только у Бори: {len(m_colors)}")
+print(f"Цвета Бори: {m_colors}")
 
-n_only = [i for i in n_colors if i not in m_colors]
-n_only.sort()
-print(f"Цветов только у Ани: {len(n_only)}")
-print(f"Цвета Ани: {n_only}")
-
-m_only = [i for i in m_colors if i not in n_colors]
-m_only.sort()
-print(f"Цветов только у Бори: {len(m_only)}")
-print(f"Цвета Бори: {m_only}")
 
