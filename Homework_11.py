@@ -51,11 +51,19 @@ for n in list(country.values()):
     else:   # Если нет в словаре
         print("Не найдено")
 
+
+
+buys = {"Коля": 200, "Дима": 500, "Вася": 500, "Саша": 400, "Саша2": 500}
+
+buyers = list(buys.keys())
+
+names = [n for n in buys if buys.get(n) == max(buys.values())]  #Имена с максимальной покупкой (на случай нескольких вариантов)
+for n in names:
+    print(f"{n}: {buys.get(n)} рублей")
+
+print(f"Количество покупок: {len(buyers)}")
+
 '''
-
-
-
-
 
 
 
