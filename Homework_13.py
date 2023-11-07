@@ -120,8 +120,8 @@ for i in range(4):
     right(90)
 
 time.sleep(3)
-"""
-# ---------------------Задание 7. Черепашка 2---------------------------
+
+# ---------------------Задание 7. Черепашка 3---------------------------
 
 from turtle import *
 import time
@@ -132,15 +132,15 @@ def draw_hexagon(a):
         left(60)
 
 a = 50
-for i in range(4):
-    draw_hexagon(a)
-    time.sleep(3)
-    # forward(a)
-    # right(90)
+draw_hexagon(a)
+forward(a*2)
+draw_hexagon(a)
+right(180)
+draw_hexagon(a)
 
 time.sleep(3)
 
-
+"""
 
 
 
