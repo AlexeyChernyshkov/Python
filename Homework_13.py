@@ -58,13 +58,16 @@ import re
 
 test_string = "n12login name22login 2name2login 2name2logi name2login 12login"
 reg_ex = r"^(?=.*?\d.*\d)(?=.*[a-zA-Z]).+$"
-
+counter = 0
 split_string = test_string.split() #делю строку на подстроки
 # print(split_string)
 
 for i in split_string:
-    if i[len(i)-5:len(i)] == "login" and re.findall(reg_ex, i[:len(i)-5]): #проверяю, что окончание login и проверяю строку без него
-        print(re.findall(reg_ex, i))
+    if i[len(i)-5:len(i)] == "login" and re.findall(reg_ex, i[:len(i)-5]): #проверяю ,что окончание login и проверяю строку без него
+        print(*re.findall(reg_ex, i))
+        counter += 1
+
+print("Прошло проверку:", counter)
 
 
 # ---------------------Задание 4. Черепашка 1---------------------------
