@@ -54,18 +54,17 @@ for i in car_num:
 #
 # Программа должны вывести кол-во валидных значений и показать их в консоле
 
-#----------Задача пока не решена------------------
+import re
 
-# import re
-#
-# test_string = "А000АА АА000А ААА000 000ААА 0А0А0А В902ЫФ"
-# reg_ex = r"[А-ЯЁ]{1}\d{3}[А-ЯЁ]{2}"
-#
-# login = re.findall(reg_ex, test_string)
-#
-# print(len(login))
-# for i in login:
-#     print(i)
+test_string = "n12login name22login 2name2login 2name2logi name2login 12login"
+reg_ex = r"^(?=.*?\d.*\d)(?=.*[a-zA-Z]).+$"
+
+split_string = test_string.split() #делю строку на подстроки
+# print(split_string)
+
+for i in split_string:
+    if i[len(i)-5:len(i)] == "login" and re.findall(reg_ex, i[:len(i)-5]): #проверяю, что окончание login и проверяю строку без него
+        print(re.findall(reg_ex, i))
 
 
 # ---------------------Задание 4. Черепашка 1---------------------------
