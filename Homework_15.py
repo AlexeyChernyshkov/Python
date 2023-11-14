@@ -1,4 +1,3 @@
-"""
 # # ------------------------Задача 1--------------------------#
 # Ферзю задаются координаты в формате 4 4.
 # Показать при помощи консоли список, куда ферзь может ходить из заданной позиции
@@ -109,37 +108,28 @@ except TypeError:
     print("Нет нужных данных (список пуст)")
 
 
-"""
+
 # # ------------------------Задача 5--------------------------#
 # Дана строка, состоящая из символов A, B и C.
 # Определите максимальное количество идущих подряд символов, среди которых каждые два соседних различны.
 import re
 
+def not_similar():
+    count = count_max = 1
+    for i in range(len(string) - 1):
+        if string[i] != string[i + 1]:
+            count += 1
+        else:
+            if count_max < count:
+                count_max = count
+            count = 1
+    if count_max < count:
+        count_max = count
+    return count_max
+
 string = "AABAAAAABCABAAABC"
+print(not_similar())
 
-count = count_max = 1
-for i in range(len(string) - 1):
-    if string[i] != string[i + 1]:
-        count += 1
-    else:
-        if count_max < count:
-            count_max = count
-        count = 1
-if count_max < count:
-    count_max = count
-
-print(count_max)
-
-# reg_ex = r"(.)\1"
-#
-# final = re.sub(reg_ex, '. .', string)
-# print(final)
-# print (len(max(re.sub(reg_ex, '. .', string).split(), key=len))-1)
-
-
-
-
-"""
 
 # # ------------------------Задача 6--------------------------#
 # Дана строка, состоящая из символов X, Y, и Z.
@@ -154,5 +144,5 @@ res = len(max(final(string), key=len))
 
 print(res)
 
-"""
+
 
